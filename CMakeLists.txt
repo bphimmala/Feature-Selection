@@ -1,0 +1,6 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+project(Project2)
+
+ADD_EXECUTABLE(run
+    src/main.cpp
+)
