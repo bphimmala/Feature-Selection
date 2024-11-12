@@ -14,6 +14,7 @@ class Node{
     public:
         Node(int);
         Node(int, Operations, Node);
+        void updateState(int);
         double evaluationFunction();
 };
 
