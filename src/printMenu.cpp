@@ -23,7 +23,7 @@ void printMenu() {
 
     cout << "Beginning search.";
 
-    // construct intial node
+    Node initialNode(userAlgorithmChoice, userFeatureChoice);
     // call search function
 
     return;
