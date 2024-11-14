@@ -23,8 +23,8 @@ Node::Node(int algo, int featMax) {
 Node::Node(int newFeature, Node parent) {
     // child constructor
 
-    featureMax = parent.getFeatureMax();
-    algorithm = parent.getAlgorithm();
+    featureMax = parent.featureMax;
+    algorithm = parent.algorithm;
     newFeat = newFeature;
 
     for (int i = 0; i < parent.currState.size()-1; ++i) {
@@ -68,7 +68,6 @@ double Node::BEevaluationFunction(vector<int>){
     return randNum;
 }
 
-
 bool Node::isValid(){
     for (int i = 0; i < featureMax; i++){
         if(i == newFeat){
@@ -86,3 +85,15 @@ bool Node::operator<(const Node & N) const{
 bool Node::operator>(const Node & N) const{
     return ((accuracy < N.accuracy));
 }
+
+Node& Node::operator=(const Node & N) {
+    
+    for (int i = 0; i < N.currState.size()-1; ++i) {
+        currState.push_back(N.currState.at(i));
+    }
+    accuracy = N.accuracy;
+    featureMax = N.featureMax;
+    algorithm = N.algorithm;
+    newFeat = N.newFeat;
+    return *this;
+} 
