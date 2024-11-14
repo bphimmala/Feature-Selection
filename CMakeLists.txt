@@ -4,4 +4,6 @@ project(Project2)
 ADD_EXECUTABLE(run
     src/main.cpp
     src/printMenu.cpp
+    src/node.cpp
+    src/Search.cpp
 )

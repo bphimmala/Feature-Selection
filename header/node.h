@@ -13,7 +13,7 @@ class Node{
         int newFeat;
         vector<int> currState;
     public:
-        Node(int, int);  // parent constructor
+        Node(int algorithm, int featMax);  // parent constructor
         Node(int, Node); // child constructor
         void updateState();
         double evaluationFunction();
