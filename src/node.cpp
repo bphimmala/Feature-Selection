@@ -27,7 +27,7 @@ void Node::updateState(int algorithm){
 
 }
 
-double Node::evaluationFunction(){
+double Node::evaluationFunction(vector<int>){
     const long max_rand = 1000000L;
     double lowerBound = 0;
     double upperBound = 10;

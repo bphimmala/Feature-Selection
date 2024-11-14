@@ -17,7 +17,8 @@ class Node{
         Node(int, int);  // child constructor
         Node(int, Node); // parent constructor
         void updateState();
-        double evaluationFunction();
+        double FSevaluationFunction(vector<int>);
+        double BEevaluationFunction(vector<int>);
         bool isValid();
         bool operator<(const Node &) const; //overloading operators for prio queue
         bool operator>(const Node &) const;
