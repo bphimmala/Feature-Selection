@@ -41,7 +41,16 @@ Node::Node(int newFeature, Node parent) {
 
 void Node::updateState(){
     // add the New Feature to the array
-    currState.push_back(newFeat);
+    if (!algorithm) {
+        currState.push_back(newFeat);
+    }
+    else {
+        for (int i = 0; i < currState.size(); i++) {
+            if (currState.at(i) == newFeat) {
+                currState.erase(currState.begin()+i);
+            }
+        }
+    }
 }
 
 double Node::FSevaluationFunction(vector<int>){
@@ -65,26 +74,31 @@ double Node::BEevaluationFunction(vector<int>){
 bool Node::isValid(){
     bool found = 0;
     
-    for (int i = 0; i < featureMax; i++){
-        if(i == newFeat){
+    for (int i = 0; i < currState.size(); i++){
+        if(currState.at(i) == newFeat){
             found = 1;
         }
     }
-    if (!algorithm && found) {
+    if (!algorithm && (found || (currState.size() == featureMax))) {
+        // forward case
         return false;
     }
-    if (algorithm && !found) {
+    if (algorithm && (!found || (currState.size() == 0))) {
+        // backward case
+        return false;
+    }
+    if (newFeat > featureMax) {
         return false;
     }
     return true;
 }
 
 bool Node::operator<(const Node & N) const{
-    return ((accuracy > N.accuracy));
+    return ((accuracy < N.accuracy));
 }
 
 bool Node::operator>(const Node & N) const{
-    return ((accuracy < N.accuracy));
+    return ((accuracy > N.accuracy));
 }
 
 Node& Node::operator=(const Node & N) {

@@ -8,7 +8,7 @@ ADD_EXECUTABLE(run
     src/Search.cpp
 )
 
-ADD_EXECUTABLE(nodeTest
-    src/test.cpp
-    src/node.cpp
-)
+# ADD_EXECUTABLE(nodeTest
+#     src/test.cpp
+#     src/node.cpp
+# )

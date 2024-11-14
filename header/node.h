@@ -14,7 +14,7 @@ class Node{
         vector<int> currState;
     public:
         Node(int algorithm, int featMax);  // parent constructor
-        Node(int, Node); // child constructor
+        Node(int newFeature, Node parent); // child constructor
         void updateState();
         double FSevaluationFunction(vector<int>);
         double BEevaluationFunction(vector<int>);
