@@ -3,5 +3,6 @@
 #include "..\header\node.h"
 #include <queue>
 
+Node Search(Node parent);
 
 #endif

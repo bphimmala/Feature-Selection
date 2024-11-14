@@ -117,12 +117,16 @@ double Node::getAccuracy() {
 }
 
 void Node::printState() {
-    if (currState.size() == 0) {
-        return;
+    cout << "{";
+    if (currState.size() > 1) {
+        for (int i = 0; i < currState.size()-1; ++i) {
+            cout << currState.at(i) << ", ";
+        }
+        cout << currState.at(currState.size()-1);
     }
-    for (int i = 0; i < currState.size(); ++i) {
-        cout << currState.at(i) << " ";
+    else if (currState.size() == 1) {
+        cout << currState.at(0);
     }
-    cout << endl;
+    cout << "}";
     return;
 }

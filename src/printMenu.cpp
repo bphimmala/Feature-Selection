@@ -1,8 +1,11 @@
 #include "..\header\printMenu.h"
 
 void printMenu() {
+    srand(time(0));
+
     int userFeatureChoice = 0;
     int userAlgorithmChoice = 0;
+    int algorithm = 0;
 
     cout << "Welcome to ehix001-sphim001 Feature Selection Algorithm" << endl << endl;
     
@@ -21,15 +24,21 @@ void printMenu() {
     // evaluation ?
     cout << "%" << endl << endl;
 
-    cout << "Beginning search.";
+    cout << "Beginning search." << endl << endl;
 
-    Node initialNode(userAlgorithmChoice, userFeatureChoice);
+    if (userAlgorithmChoice == 1) {
+        algorithm = 0;
+    }
+    else if (userAlgorithmChoice == 2) {
+        algorithm = 1;
+    }
     
+    Node initialNode(algorithm, userFeatureChoice);
     cout << "(Warning, Accuracy has decreased!)" << endl;
-    cout << "Finished search!! The best feature subset is {";
+    cout << "Finished search!! The best feature subset is ";
     Node solution = Search(initialNode);
     solution.printState();
-    cout << "}, which has an accuracy of " << solution.getAccuracy() << "%";
+    cout << ", which has an accuracy of " << solution.getAccuracy() << "%";
     
     return;
 }
