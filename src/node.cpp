@@ -98,12 +98,16 @@ Node& Node::operator=(const Node & N) {
 }
 
 double Node::getAccuracy() {
-    return accuracy;
+    return accuracy*100;
 }
 
 void Node::printState() {
-    for (int i = 0; i < currState.size()-1; ++i) {
+    if (currState.size() == 0) {
+        return;
+    }
+    for (int i = 0; i < currState.size(); ++i) {
         cout << currState.at(i) << " ";
     }
+    cout << endl;
     return;
 }
