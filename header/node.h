@@ -21,9 +21,10 @@ class Node{
         bool isValid();
         bool operator<(const Node &) const; //overloading operators for prio queue
         bool operator>(const Node &) const;
-        int getFeatureMax();
-        double getAccuracy();
-        int getAlgorithm();
+        Node& operator=(const Node &);
+        // int getFeatureMax();
+        // double getAccuracy();
+        // int getAlgorithm();
 };
 
 #endif
