@@ -50,6 +50,15 @@ void Node::updateState(){
     currState.push_back(newFeat);
 }
 
+double Node::FSevaluationFunction(vector<int>){
+    const long max_rand = 1000000L;
+    double lowerBound = 0;
+    double upperBound = 10;
+    double randNum = lowerBound + (upperBound - lowerBound) * (rand() % max_rand) / max_rand;
+    
+    return randNum;
+}
+
 double Node::BEevaluationFunction(vector<int>){
     const long max_rand = 1000000L;
     double lowerBound = 0;
