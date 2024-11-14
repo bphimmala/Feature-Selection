@@ -4,5 +4,6 @@
 #include <queue>
 
 Node Search(Node parent);
+void expand(Node parentToExpand, priority_queue<Node> &frontier);
 
 #endif
