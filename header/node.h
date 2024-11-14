@@ -23,7 +23,7 @@ class Node{
         bool operator>(const Node &) const;
         Node& operator=(const Node &);
         // int getFeatureMax();
-        // double getAccuracy();
+        double getAccuracy();
         // int getAlgorithm();
 };
 

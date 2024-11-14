@@ -87,7 +87,6 @@ bool Node::operator>(const Node & N) const{
 }
 
 Node& Node::operator=(const Node & N) {
-    
     for (int i = 0; i < N.currState.size()-1; ++i) {
         currState.push_back(N.currState.at(i));
     }
@@ -96,4 +95,8 @@ Node& Node::operator=(const Node & N) {
     algorithm = N.algorithm;
     newFeat = N.newFeat;
     return *this;
-} 
+}
+
+double Node::getAccuracy() {
+    return accuracy;
+}
