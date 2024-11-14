@@ -24,6 +24,7 @@ class Node{
         Node& operator=(const Node &);
         // int getFeatureMax();
         double getAccuracy();
+        void printState();
         // int getAlgorithm();
 };
 

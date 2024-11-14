@@ -100,3 +100,10 @@ Node& Node::operator=(const Node & N) {
 double Node::getAccuracy() {
     return accuracy;
 }
+
+void Node::printState() {
+    for (int i = 0; i < currState.size()-1; ++i) {
+        cout << currState.at(i) << " ";
+    }
+    return;
+}
