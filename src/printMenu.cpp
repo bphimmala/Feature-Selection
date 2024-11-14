@@ -24,7 +24,12 @@ void printMenu() {
     cout << "Beginning search.";
 
     Node initialNode(userAlgorithmChoice, userFeatureChoice);
-    // call search function
-
+    
+    cout << "(Warning, Accuracy has decreased!)" << endl;
+    cout << "Finished search!! The best feature subset is {";
+    Node solution = Search(initialNode);
+    solution.printState();
+    cout << "}, which has an accuracy of " << solution.getAccuracy() << "%";
+    
     return;
 }
