@@ -27,14 +27,8 @@ Node::Node(int newFeature, Node parent) {
     algorithm = parent.algorithm;
     newFeat = newFeature;
 
-    for (int i = 0; i < parent.currState.size()-1; ++i) {
+    for (int i = 0; i < parent.currState.size(); ++i) {
         currState.push_back(parent.currState.at(i));
-    }
-
-    if (algorithm) {
-        for (int i = 0; i < featureMax; ++i) {
-            currState.push_back(i+1);
-        }
     }
     
     if(algorithm == 0){
@@ -69,12 +63,19 @@ double Node::BEevaluationFunction(vector<int>){
 }
 
 bool Node::isValid(){
+    bool found = 0;
+    
     for (int i = 0; i < featureMax; i++){
         if(i == newFeat){
-            return false;
+            found = 1;
         }
     }
-
+    if (!algorithm && found) {
+        return false;
+    }
+    if (algorithm && !found) {
+        return false;
+    }
     return true;
 }
 
