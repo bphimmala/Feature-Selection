@@ -9,13 +9,12 @@ class Node{
     private:
         double accuracy;    // basically h(n)
         int featureMax;
-        int algorithm;
+        int algorithm; // 0 = forward, 1 = backwards
         int newFeat;
         vector<int> currState;
-        vector<int> initialArray;
     public:
-        Node(int, int);  // child constructor
-        Node(int, Node); // parent constructor
+        Node(int, int);  // parent constructor
+        Node(int, Node); // child constructor
         void updateState();
         double FSevaluationFunction(vector<int>);
         double BEevaluationFunction(vector<int>);
@@ -23,6 +22,8 @@ class Node{
         bool operator<(const Node &) const; //overloading operators for prio queue
         bool operator>(const Node &) const;
         int getFeatureMax();
+        double getAccuracy();
+        int getAlgorithm();
 };
 
 #endif

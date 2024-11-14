@@ -1,30 +1,34 @@
 #include "../header/node.h"
 
-Node::Node(int algorithm){
-    accuracy = 0;
+Node::Node(int algo, int featMax) {
+    // parent constructor
+    accuracy = evaluationFunction();
+    featureMax = featMax;
+    algorithm = algo;
+    newFeat = 0;
 
-    if (algorithm == 1){ // forward selection
-
-    }
-    if (algorithm == 2){ // backward elimination
-
-    }
-}
-
-Node::Node(int algorithm, Operations inputOp, Node parent){
-    
-    operation = inputOp;
-
-    if (algorithm == 1){ // forward selection
-    
-    }
-    if(algorithm == 2){ // backward elimination
-
+    if (algorithm) {
+        for (int i = 0; i < featureMax; ++i) {
+            currState.push_back(i+1);
+        }
     }
 }
 
-void Node::updateState(int algorithm){
+Node::Node(int newFeature, Node parent) {
+    // child constructor
+    accuracy = evaluationFunction();
 
+    featureMax = parent.getFeatureMax();
+    algorithm = parent.getAlgorithm();
+    newFeat = newFeature;
+    for (int i = 0; i < parent.currState.size()-1; ++i) {
+        currState.push_back(parent.currState.at(i));
+    }
+}
+
+void Node::updateState(){
+    // add the New Feature to the array
+    currState.push_back(newFeat);
 }
 
 double Node::evaluationFunction(vector<int>){
