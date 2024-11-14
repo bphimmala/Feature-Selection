@@ -7,3 +7,8 @@ ADD_EXECUTABLE(run
     src/node.cpp
     src/Search.cpp
 )
+
+ADD_EXECUTABLE(nodeTest
+    src/test.cpp
+    src/node.cpp
+)
