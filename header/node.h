@@ -22,7 +22,7 @@ class Node{
         bool operator<(const Node &) const; //overloading operators for prio queue
         bool operator>(const Node &) const;
         Node& operator=(const Node &);
-        // int getFeatureMax();
+        int getFeatureMax();
         double getAccuracy();
         void printState();
         // int getAlgorithm();

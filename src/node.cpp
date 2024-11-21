@@ -106,6 +106,11 @@ Node& Node::operator=(const Node & N) {
     return *this;
 }
 
+
+int Node::getFeatureMax() {
+    return featureMax;
+}
+
 double Node::getAccuracy() {
     return accuracy;
 }
