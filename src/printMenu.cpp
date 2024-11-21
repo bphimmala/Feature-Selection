@@ -1,8 +1,6 @@
 #include "..\header\printMenu.h"
 
 void printMenu() {
-    srand(time(0));
-
     int userFeatureChoice = 0;
     int userAlgorithmChoice = 0;
     int algorithm = 0;
