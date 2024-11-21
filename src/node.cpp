@@ -43,11 +43,17 @@ Node::Node(int newFeature, Node parent) {
 }
 
 void Node::updateState(){
-    // add the New Feature to the array
+    
     if (!algorithm) {
+    // add the New Feature to the array
+        if ((currState.size() == 1) && (currState.at(0) == 0)) {
+            //erase if the parent 0 is there
+            currState.erase(currState.begin());
+        }
         currState.push_back(newFeat);
     }
     else {
+    // remove the feature from the array
         for (int i = 0; i < currState.size(); i++) {
             if (currState.at(i) == newFeat) {
                 currState.erase(currState.begin()+i);
@@ -127,7 +133,10 @@ void Node::printState() {
         cout << currState.at(currState.size()-1);
     }
     else if (currState.size() == 1) {
-        cout << currState.at(0);
+        if (currState.at(0) != 0) {
+            cout << currState.at(0);
+        }
+        // cout << currState.at(0);
     }
     cout << "}" << endl;
     return;
