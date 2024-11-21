@@ -54,21 +54,15 @@ void Node::updateState(){
 }
 
 double Node::FSevaluationFunction(vector<int>){
-    const long max_rand = 1000000L;
-    double lowerBound = 0;
-    double upperBound = 10;
-    double randNum = lowerBound + (upperBound - lowerBound) * (rand() % max_rand) / max_rand;
-    
-    return randNum;
+    float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
+    //cout << " FS acc: " << randNum << endl;
+    return randNum * 10;
 }
 
 double Node::BEevaluationFunction(vector<int>){
-    const long max_rand = 1000000L;
-    double lowerBound = 0;
-    double upperBound = 10;
-    double randNum = lowerBound + (upperBound - lowerBound) * (rand() % max_rand) / max_rand;
-    
-    return randNum;
+    float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
+    //cout << " BE acc: " << randNum << endl;
+    return randNum * 10;
 }
 
 bool Node::isValid(){
@@ -113,7 +107,7 @@ Node& Node::operator=(const Node & N) {
 }
 
 double Node::getAccuracy() {
-    return accuracy*100;
+    return accuracy;
 }
 
 void Node::printState() {
@@ -127,6 +121,6 @@ void Node::printState() {
     else if (currState.size() == 1) {
         cout << currState.at(0);
     }
-    cout << "}";
+    cout << "}" << endl;
     return;
 }
