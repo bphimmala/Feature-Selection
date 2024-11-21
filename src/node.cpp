@@ -6,10 +6,13 @@ Node::Node(int algo, int featMax) {
     algorithm = algo;
     newFeat = 0;
 
-    if (algorithm) {
+    if (algorithm) { // backwards elimination
         for (int i = 0; i < featureMax; ++i) {
             currState.push_back(i+1);
         }
+    }
+    else{
+        currState.push_back(0);
     }
     
     if(algo == 0){
@@ -53,13 +56,13 @@ void Node::updateState(){
     }
 }
 
-double Node::FSevaluationFunction(vector<int>){
+double Node::FSevaluationFunction(vector<int> curr){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
     cout << " FS acc: " << randNum << endl;
     return randNum;
 }
 
-double Node::BEevaluationFunction(vector<int>){
+double Node::BEevaluationFunction(vector<int> curr){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
     cout << " BE acc: " << randNum << endl;
     return randNum;

@@ -2,6 +2,7 @@
 #define NODE_H
 #include <cmath>
 #include <vector>
+#include <queue>
 #include <iostream>
 using namespace std;
 
