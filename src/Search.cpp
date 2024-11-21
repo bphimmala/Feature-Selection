@@ -18,5 +18,11 @@ Node Search(Node parent) {
 }
 
 void expand(Node parentToExpand, priority_queue<Node> &frontier) {
-
+    for(int i = 0; i < parentToExpand.getFeatureMax(); i++){
+        Node temp(i, parentToExpand);
+        if(temp.isValid()){
+            temp.updateState();
+            frontier.push(temp);
+        }
+    }
 }
