@@ -55,14 +55,14 @@ void Node::updateState(){
 
 double Node::FSevaluationFunction(vector<int>){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
-    //cout << " FS acc: " << randNum << endl;
-    return randNum * 10;
+    cout << " FS acc: " << randNum << endl;
+    return randNum;
 }
 
 double Node::BEevaluationFunction(vector<int>){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
-    //cout << " BE acc: " << randNum << endl;
-    return randNum * 10;
+    cout << " BE acc: " << randNum << endl;
+    return randNum;
 }
 
 bool Node::isValid(){
