@@ -18,12 +18,6 @@ void printMenu() {
     cin >> userAlgorithmChoice;
     cout << endl;
 
-    cout << "Using no features and \"random\" evaluation, I get an accuracy of ";
-    // evaluation ?
-    cout << "%" << endl << endl;
-
-    cout << "Beginning search." << endl << endl;
-
     if (userAlgorithmChoice == 1) {
         algorithm = 0;
     }
@@ -32,9 +26,9 @@ void printMenu() {
     }
     
     Node initialNode(algorithm, userFeatureChoice);
-    cout << "(Warning, Accuracy has decreased!)" << endl;
-    cout << "Finished search!! The best feature subset is ";
     Node solution = Search(initialNode);
+    cout << endl << "(Warning, Accuracy has decreased!)" << endl;
+    cout << "Finished search!! The best feature subset is ";
     solution.printState();
     cout << ", which has an accuracy of " << solution.getAccuracy() << "%";
     

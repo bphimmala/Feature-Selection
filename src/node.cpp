@@ -64,22 +64,22 @@ void Node::updateState(){
 
 double Node::FSevaluationFunction(vector<int> curr){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
-    cout << " FS acc: " << randNum << endl;
+    // cout << " FS acc: " << randNum << endl;
     return randNum;
 }
 
 double Node::BEevaluationFunction(vector<int> curr){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
-    cout << " BE acc: " << randNum << endl;
+    // cout << " BE acc: " << randNum << endl;
     return randNum;
 }
 
 bool Node::isValid(){
-    bool found = 0;
+    bool found = false;
     
     for (int i = 0; i < currState.size(); i++){
         if(currState.at(i) == newFeat){
-            found = 1;
+            found = true;
         }
     }
     if (!algorithm && (found || (currState.size() == featureMax))) {
@@ -112,6 +112,9 @@ Node& Node::operator=(const Node & N) {
     featureMax = N.featureMax;
     algorithm = N.algorithm;
     newFeat = N.newFeat;
+    if (this != &N) {            
+        currState = std::move(N.currState);
+    }
     return *this;
 }
 
@@ -136,8 +139,7 @@ void Node::printState() {
         if (currState.at(0) != 0) {
             cout << currState.at(0);
         }
-        // cout << currState.at(0);
     }
-    cout << "}" << endl;
+    cout << "}";
     return;
 }
