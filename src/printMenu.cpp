@@ -13,8 +13,8 @@ void printMenu() {
 
     cout << "Type the number of the algorithm you want to run." << endl;
     cout << "1) Forward Selection" << endl;
-    cout << "2) Backward Elimination" << endl;
-    cout << "3) Special Algorithm" << endl << endl;
+    cout << "2) Backward Elimination" << endl << endl;
+    // cout << "3) Special Algorithm" << endl << endl;
     cin >> userAlgorithmChoice;
     cout << endl;
 

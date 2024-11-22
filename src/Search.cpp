@@ -5,7 +5,12 @@ Node Search(Node parent) {
     Node emptyNode(1, 0);
     frontier.push(parent);
     
-    cout << "Using no features and \"random\" evaluation, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
+    if (parent.getAlgorithm() == 0) {
+        cout << "Using no features and \"random\" evaluation, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
+    }
+    if (parent.getAlgorithm() == 1) {
+        cout << "Using all features and \"random\" evaluation, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
+    }
 
     cout << "Beginning search." << endl << endl;
     

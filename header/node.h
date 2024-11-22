@@ -20,12 +20,14 @@ class Node{
         double FSevaluationFunction(vector<int>);
         double BEevaluationFunction(vector<int>);
         bool isValid();
+        bool isEmpty();
         bool operator<(const Node &) const; //overloading operators for prio queue
         bool operator>(const Node &) const;
         Node& operator=(const Node &);
         int getFeatureMax();
         double getAccuracy();
         void printState();
+        int getAlgorithm();
 };
 
 #endif

@@ -16,7 +16,7 @@ Node::Node(int algo, int featMax) {
     }
     
     if(algo == 0){
-        accuracy = FSevaluationFunction(currState);
+        accuracy = 0;
     }
     else if(algo == 1){
         accuracy = BEevaluationFunction(currState);
@@ -149,4 +149,8 @@ void Node::printState() {
     }
     cout << "}";
     return;
+}
+
+int Node::getAlgorithm() {
+    return algorithm;
 }
