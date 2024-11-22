@@ -2,6 +2,7 @@
 
 Node Search(Node parent) {
     priority_queue<Node> frontier;
+    Node emptyNode(1, 0);
     frontier.push(parent);
     
     cout << "Using no features and \"random\" evaluation, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
@@ -13,12 +14,12 @@ Node Search(Node parent) {
         frontier.pop();
         expand(temp, frontier);
         Node newTop = frontier.top();
-        if (newTop.getAccuracy() < temp.getAccuracy()) {
-            cout << "UH OH!!! Accuracy decreased..." << endl;
-            cout << "The best feature set was found!" << endl;
-            cout << "Using features ";
+        if (newTop.getAccuracy() <= temp.getAccuracy()) {
+            cout << "Warning! Accuracy decreased!" << endl;
+            cout << "Search has finished." << endl;
+            cout << "The best feature set is ";
             temp.printState();
-            cout << " had the highest accuracy of " << temp.getAccuracy() << "% !!!" << endl;
+            cout << ", which has an accuracy of " << temp.getAccuracy() << "%!" << endl;
             return temp;
         }
         cout << "Feature set ";
@@ -30,6 +31,8 @@ Node Search(Node parent) {
 }
 
 void expand(Node parentToExpand, priority_queue<Node> &frontier) {
+    Node emptyNode(1, 0);
+
     for(int i = 1; i <= parentToExpand.getFeatureMax(); i++){
         Node temp(i, parentToExpand);
         if(temp.isValid()){
@@ -37,8 +40,11 @@ void expand(Node parentToExpand, priority_queue<Node> &frontier) {
             cout << "Using feature(s) ";
             temp.printState();
             cout << " has an accuracy of " << temp.getAccuracy() << "%" << endl;
-            Node newNode = temp;
-            frontier.push(newNode);
+            if (temp.getAccuracy() == 0) {
+                cout << endl;
+                return;
+            }
+            frontier.push(temp);
         }
     }
     cout << endl;

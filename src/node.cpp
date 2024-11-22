@@ -60,6 +60,9 @@ void Node::updateState(){
             }
         }
     }
+    if (isEmpty()) {
+        accuracy = 0;
+    }
 }
 
 double Node::FSevaluationFunction(vector<int> curr){
@@ -97,6 +100,10 @@ bool Node::isValid(){
     return true;
 }
 
+bool Node::isEmpty() {
+    return (currState.empty());
+}
+
 bool Node::operator<(const Node & N) const{
     return ((accuracy < N.accuracy));
 }
@@ -114,11 +121,10 @@ Node& Node::operator=(const Node & N) {
     algorithm = N.algorithm;
     newFeat = N.newFeat;
     if (this != &N) {            
-        currState = std::move(N.currState);
+        currState = move(N.currState);
     }
     return *this;
 }
-
 
 int Node::getFeatureMax() {
     return featureMax;
