@@ -14,6 +14,11 @@ Node Search(Node parent) {
         expand(temp, frontier);
         Node newTop = frontier.top();
         if (newTop.getAccuracy() < temp.getAccuracy()) {
+            cout << "UH OH!!! Accuracy decreased..." << endl;
+            cout << "The best feature set was found!" << endl;
+            cout << "Using features ";
+            temp.printState();
+            cout << " had the highest accuracy of " << temp.getAccuracy() << "% !!!" << endl;
             return temp;
         }
         cout << "Feature set ";
@@ -31,7 +36,7 @@ void expand(Node parentToExpand, priority_queue<Node> &frontier) {
             temp.updateState();
             cout << "Using feature(s) ";
             temp.printState();
-            cout << " accuracy is " << temp.getAccuracy() << "%" << endl;
+            cout << " has an accuracy of " << temp.getAccuracy() << "%" << endl;
             Node newNode = temp;
             frontier.push(newNode);
         }
