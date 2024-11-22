@@ -19,7 +19,7 @@ Node::Node(int algo, int featMax) {
         accuracy = FSevaluationFunction(currState);
     }
     else if(algo == 1){
-        accuracy == BEevaluationFunction(currState);
+        accuracy = BEevaluationFunction(currState);
     }
 }
 
@@ -38,7 +38,7 @@ Node::Node(int newFeature, Node parent) {
         accuracy = FSevaluationFunction(currState);
     }
     else if(algorithm == 1){
-        accuracy == BEevaluationFunction(currState);
+        accuracy = BEevaluationFunction(currState);
     }
 }
 
@@ -71,6 +71,7 @@ double Node::FSevaluationFunction(vector<int> curr){
 double Node::BEevaluationFunction(vector<int> curr){
     float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
     // cout << " BE acc: " << randNum << endl;
+    //float randNum = rand() % 101;
     return randNum;
 }
 
