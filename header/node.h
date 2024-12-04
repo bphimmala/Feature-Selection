@@ -17,8 +17,11 @@ class Node{
         Node(int algorithm, int featMax);  // parent constructor
         Node(int newFeature, Node parent); // child constructor
         void updateState();
-        double FSevaluationFunction(vector<int>);
-        double BEevaluationFunction(vector<int>);
+
+        double validator(vector<int>, const string&);
+        double distance(vector<int>, vector<int>, vector<int>);
+        void normalize(const string&);
+
         bool isValid();
         bool isEmpty();
         bool operator<(const Node &) const; //overloading operators for prio queue

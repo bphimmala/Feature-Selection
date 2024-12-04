@@ -15,12 +15,7 @@ Node::Node(int algo, int featMax) {
         currState.push_back(0);
     }
     
-    if(algo == 0){
-        accuracy = 0;
-    }
-    else if(algo == 1){
-        accuracy = BEevaluationFunction(currState);
-    }
+    // accuracy = validator(); LATERRR
 }
 
 Node::Node(int newFeature, Node parent) {
@@ -34,12 +29,7 @@ Node::Node(int newFeature, Node parent) {
         currState.push_back(parent.currState.at(i));
     }
     
-    if(algorithm == 0){
-        accuracy = FSevaluationFunction(currState);
-    }
-    else if(algorithm == 1){
-        accuracy = BEevaluationFunction(currState);
-    }
+    // accuracy = validator(); LATER ISSUE
 }
 
 void Node::updateState(){
@@ -65,17 +55,18 @@ void Node::updateState(){
     }
 }
 
-double Node::FSevaluationFunction(vector<int> curr){
-    float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
-    // cout << " FS acc: " << randNum << endl;
-    return randNum;
+double Node::validator(vector<int> feature_subset, const string& dataset){
+
+    return 0; // for now
 }
 
-double Node::BEevaluationFunction(vector<int> curr){
-    float randNum = ((float)rand() /(float)RAND_MAX) * 100.0f;
-    // cout << " BE acc: " << randNum << endl;
-    //float randNum = rand() % 101;
-    return randNum;
+double Node::distance(vector<int> feature_subset, vector<int> instance, vector<int> comp_instance){
+
+    return 0; // for now
+}
+
+void Node::normalize(const string& dataset){
+    
 }
 
 bool Node::isValid(){
