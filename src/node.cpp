@@ -16,7 +16,13 @@ Node::Node(int algo, int featMax, string userDataset) {
         currState.push_back(0);
     }
     
-    // accuracy = validator(); LATERRR
+    if (!algorithm) {
+        //forward, thus empty
+        accuracy = 0;
+    }
+    else {
+        accuracy = validator(currState, dataset);
+    }
 }
 
 Node::Node(int newFeature, Node parent) {
@@ -31,7 +37,7 @@ Node::Node(int newFeature, Node parent) {
         currState.push_back(parent.currState.at(i));
     }
     
-    // accuracy = validator(); LATER ISSUE
+    accuracy = validator(this->currState, this->dataset);
 }
 
 void Node::updateState(){
@@ -52,6 +58,7 @@ void Node::updateState(){
             }
         }
     }
+    accuracy = validator(this->currState, this->dataset);
     if (isEmpty()) {
         accuracy = 0;
     }

@@ -1,6 +1,6 @@
 #include "../header/validator.h"
 
-double validator(vector<int> featureSubset, const string dataFile){
+double validator(vector<int> featureSubset, string dataFile){
 
     // vector<vector<double>> allInstances;
     // vector<int> featureSubset;
@@ -31,5 +31,5 @@ double validator(vector<int> featureSubset, const string dataFile){
     // }
 
     // return correct / allInstances.size();
-    return 0;
+    return 0.0;
 }

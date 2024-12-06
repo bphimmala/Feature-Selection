@@ -2,7 +2,6 @@
 
 Node Search(Node parent) {
     priority_queue<Node> frontier;
-    Node emptyNode(1, 0);
     frontier.push(parent);
     
     if (parent.getAlgorithm() == 0) {
@@ -36,7 +35,6 @@ Node Search(Node parent) {
 }
 
 void expand(Node parentToExpand, priority_queue<Node> &frontier) {
-    Node emptyNode(1, 0);
 
     for(int i = 1; i <= parentToExpand.getFeatureMax(); i++){
         Node temp(i, parentToExpand);

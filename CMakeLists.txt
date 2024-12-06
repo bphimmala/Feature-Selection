@@ -6,9 +6,16 @@ ADD_EXECUTABLE(run
     src/printMenu.cpp
     src/node.cpp
     src/Search.cpp
+    src/validator.cpp
 )
 
 # ADD_EXECUTABLE(nodeTest
 #     src/test.cpp
 #     src/node.cpp
+# )
+
+# ADD_EXECUTABLE(expandTest
+#     src/expandTest.cpp
+#     src/node.cpp
+#     src/Search.cpp
 # )
