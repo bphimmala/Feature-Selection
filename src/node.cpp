@@ -1,10 +1,11 @@
 #include "../header/node.h"
 
-Node::Node(int algo, int featMax) {
+Node::Node(int algo, int featMax, string userDataset) {
     // parent constructor
     featureMax = featMax;
     algorithm = algo;
     newFeat = 0;
+    dataset = userDataset;
 
     if (algorithm) { // backwards elimination
         for (int i = 0; i < featureMax; ++i) {
@@ -23,6 +24,7 @@ Node::Node(int newFeature, Node parent) {
 
     featureMax = parent.featureMax;
     algorithm = parent.algorithm;
+    dataset = parent.dataset;
     newFeat = newFeature;
 
     for (int i = 0; i < parent.currState.size(); ++i) {
@@ -53,20 +55,6 @@ void Node::updateState(){
     if (isEmpty()) {
         accuracy = 0;
     }
-}
-
-double Node::validator(vector<int> feature_subset, const string& dataset){
-
-    return 0; // for now
-}
-
-double Node::distance(vector<int> feature_subset, vector<int> instance, vector<int> comp_instance){
-
-    return 0; // for now
-}
-
-void Node::normalize(const string& dataset){
-    
 }
 
 bool Node::isValid(){
