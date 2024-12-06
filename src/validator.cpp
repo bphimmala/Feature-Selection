@@ -1,6 +1,47 @@
 #include "../header/validator.h"
 
 double validator(vector<int> featureSubset, string dataFile){
+    ifstream inputFile(dataFile);
+    vector<vector<double>> allInstances;
+
+    char delimiter = ' ';
+
+    if(inputFile.is_open()){
+        string line;
+        double i = 0;
+        while(getline(inputFile, line, '\n')){
+            vector<double> tempVector;
+            istringstream s(line);
+            while(s >> i || !s.eof()){
+                if(s.fail()){
+                    s.clear();
+                    string temp;
+                    s >> temp;
+                    continue;
+                }
+                else{
+                    tempVector.push_back(i);
+                }
+            }
+            allInstances.push_back(tempVector);
+        }
+    }
+    
+    //////////////////////////////
+    // prints out all instances //
+    //////////////////////////////
+
+    // for(int i = 0; i < allInstances.size(); i++){
+    //     cout << "instance " << i << ": " << endl;
+    //     for(int j = 0; j < allInstances.at(i).size(); j++){
+    //     cout << allInstances.at(i).at(j) << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    //////////////////////////////
+    // ROUGH CODE FOR CLASSIFER //
+    //////////////////////////////
 
     // vector<vector<double>> allInstances;
     // vector<int> featureSubset;
