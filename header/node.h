@@ -1,11 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
 #include <cmath>
-#include <vector>
-#include <queue>
-#include <string>
-#include <iostream>
-using namespace std;
 #include "../header/validator.h"
 
 class Node{

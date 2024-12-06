@@ -27,6 +27,8 @@ double validator(vector<int> featureSubset, string dataFile){
         }
     }
     
+    normalize(allInstances);
+    
     //////////////////////////////
     // prints out all instances //
     //////////////////////////////
@@ -73,4 +75,26 @@ double validator(vector<int> featureSubset, string dataFile){
 
     // return correct / allInstances.size();
     return 0.0;
+}
+
+void normalize(vector<vector<double>> &allInstances) {
+
+    for (int i = 1; i <= allInstances.at(0).size()-1; ++i) {     // for every feature
+        double featureMean = mean(allInstances, i);              // get the mean of that feature
+        double stdDev = 10;                                      // change based on function like above, get the std dev of that feature
+        for (int j = 0; j < allInstances.size(); ++j) {          // for every instance
+            double x = allInstances.at(j).at(i);                 // get the value for that feature of that instance
+            allInstances.at(j).at(i) = (x - featureMean)/stdDev; // replace it
+        }
+    }
+}
+
+double mean(vector<vector<double>> allInstances, int index) {
+    double sum = 0;
+
+    for (int i = 0; i < allInstances.size(); ++i) {
+        sum = sum + allInstances.at(i).at(index);
+    }
+
+    return (sum / allInstances.size());
 }

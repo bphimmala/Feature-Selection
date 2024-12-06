@@ -5,10 +5,10 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "../header/node.h"
-
 using namespace std;
 
 double validator(vector<int>, string);
+double mean(vector<vector<double>> allInstances, int index);
+void normalize(vector<vector<double>> &allInstances);
 
 #endif
