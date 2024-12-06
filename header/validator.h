@@ -5,10 +5,12 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <cmath>
 using namespace std;
 
 double validator(vector<int>, string);
-double mean(vector<vector<double>> allInstances, int index);
 void normalize(vector<vector<double>> &allInstances);
+double mean(vector<vector<double>> allInstances, int index);
+double standardDeviation(vector<vector<double>> allInstances, int index, double mean);
 
 #endif
