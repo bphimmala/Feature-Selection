@@ -27,54 +27,57 @@ double validator(vector<int> featureSubset, string dataFile){
         }
     }
     
+        cout << "number of instances: " << allInstances.size() << endl;
+    cout << "number of features: " << (allInstances.at(1)).size() << endl;
+    
     normalize(allInstances);
     
     //////////////////////////////
     // prints out all instances //
     //////////////////////////////
 
-    for(int i = 0; i < allInstances.size(); i++){
-        cout << "instance " << i << ": " << endl;
-        for(int j = 0; j < allInstances.at(i).size(); j++){
-        cout << allInstances.at(i).at(j) << " ";
-        }
-        cout << endl;
-    }
+    // for(int i = 0; i < allInstances.size(); i++){
+    //     cout << "instance " << i << ": " << endl;
+    //     for(int j = 0; j < allInstances.at(i).size(); j++){
+    //     cout << allInstances.at(i).at(j) << " ";
+    //     }
+    //     cout << endl;
+    // }
 
     //////////////////////////////
     // ROUGH CODE FOR CLASSIFER //
     //////////////////////////////
 
-    // vector<vector<double>> allInstances;
-    // vector<int> featureSubset;
+    int nearestNeighbor;
+    double correct = 0;
 
-    // int nearestNeighbor;
-    // int correct;
+    for(int i = 0; i < allInstances.size(); i++){ // THIS ONE IS THE ONE WE ARE TESTING
+        vector<double> testingInstance = allInstances.at(i);
+        double distance = INFINITY;
 
-    // for(int i = 0; i < allInstances.size(); i++){ // THIS ONE IS THE ONE WE ARE TESTING
-    //     vector<double> testingInstance = allInstances.at(i);
-    //     double distance = max();
-    //     for(int j = 0; i < allInstances.size(); j++){ // THIS IS WHAT WE'RE TESTING AGAINST
-    //         if(j != i){
-    //             vector<double> comparingInstance = allInstances.at(j);
-    //             double sumSq = 0;
-    //             for(int k = 0; k < featureSubset.size(); k++){ // FINDS THE FEATURES
-    //                 sumSq = sumSq + (testingInstance.at(featureSubset.at(k)) - comparingInstance.at(featureSubset.at(k)))^2;
-    //             }
-    //             double euclideanDist = sqrt(sumSq);
-    //             if(euclideanDist < distance){
-    //                 distance = euclideanDist;
-    //                 nearestNeighbor = j;
-    //             }
-    //         }
-    //     }
-    //     if (allInstances.at(j).at(0) == testingInstance.at(0)) {
-    //         ++correct;
-    //     }
-    // }
+        for(int j = 0; j < allInstances.size(); j++){ // THIS IS WHAT WE'RE TESTING AGAINST
+            if(j != i){
+                vector<double> comparingInstance = allInstances.at(j);
+                double sumSq = 0;
 
-    // return correct / allInstances.size();
-    return 0.0;
+                for(int k = 0; k < featureSubset.size(); k++){ // FINDS THE FEATURES
+                    sumSq = sumSq + pow((testingInstance.at(featureSubset.at(k)) - comparingInstance.at(featureSubset.at(k))), 2);
+                }
+
+                double euclideanDist = sqrt(sumSq);
+                if(euclideanDist < distance){
+                    distance = euclideanDist;
+                    nearestNeighbor = j;
+                }
+            }
+        }
+
+        if (allInstances.at(nearestNeighbor).at(0) == testingInstance.at(0)) {
+            ++correct;
+        }
+    }
+
+    return (correct / allInstances.size());
 }
 
 void normalize(vector<vector<double>> &allInstances) {
