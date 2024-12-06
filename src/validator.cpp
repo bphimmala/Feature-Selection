@@ -27,9 +27,6 @@ double validator(vector<int> featureSubset, string dataFile){
         }
     }
     
-        cout << "number of instances: " << allInstances.size() << endl;
-    cout << "number of features: " << (allInstances.at(1)).size() << endl;
-    
     normalize(allInstances);
     
     //////////////////////////////
