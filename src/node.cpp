@@ -37,7 +37,7 @@ Node::Node(int newFeature, Node parent) {
         currState.push_back(parent.currState.at(i));
     }
     
-    accuracy = validator(this->currState, this->dataset);
+    accuracy = 0; //not yet updated
 }
 
 void Node::updateState(){
@@ -58,7 +58,7 @@ void Node::updateState(){
             }
         }
     }
-    accuracy = validator(this->currState, this->dataset);
+    accuracy = validator(currState, dataset);
     if (isEmpty()) {
         accuracy = 0;
     }

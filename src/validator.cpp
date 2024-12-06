@@ -30,24 +30,12 @@ double validator(vector<int> featureSubset, string dataFile){
     normalize(allInstances);
     
     //////////////////////////////
-    // prints out all instances //
-    //////////////////////////////
-
-    // for(int i = 0; i < allInstances.size(); i++){
-    //     cout << "instance " << i << ": " << endl;
-    //     for(int j = 0; j < allInstances.at(i).size(); j++){
-    //     cout << allInstances.at(i).at(j) << " ";
-    //     }
-    //     cout << endl;
-    // }
-
-    //////////////////////////////
-    // ROUGH CODE FOR CLASSIFER //
+    //  CLASSIFIER + VALIDATOR  //
     //////////////////////////////
 
     int nearestNeighbor;
     double correct = 0;
-
+        
     for(int i = 0; i < allInstances.size(); i++){ // THIS ONE IS THE ONE WE ARE TESTING
         vector<double> testingInstance = allInstances.at(i);
         double distance = INFINITY;
@@ -79,12 +67,12 @@ double validator(vector<int> featureSubset, string dataFile){
 
 void normalize(vector<vector<double>> &allInstances) {
 
-    for (int i = 1; i <= allInstances.at(0).size()-1; ++i) {     // for every feature
-        double featureMean = mean(allInstances, i);              // get the mean of that feature
-        double stdDev = standardDeviation(allInstances, i, featureMean);                                      // change based on function like above, get the std dev of that feature
-        for (int j = 0; j < allInstances.size(); ++j) {          // for every instance
-            double x = allInstances.at(j).at(i);                 // get the value for that feature of that instance
-            allInstances.at(j).at(i) = (x - featureMean)/stdDev; // replace it
+    for (int i = 1; i <= allInstances.at(0).size()-1; ++i) {              // for every feature
+        double featureMean = mean(allInstances, i);                       // get the mean of that feature
+        double stdDev = standardDeviation(allInstances, i, featureMean);  // get the std dev of that feature
+        for (int j = 0; j < allInstances.size(); ++j) {                   // for every instance
+            double x = allInstances.at(j).at(i);                          // get the value for that feature of that instance
+            allInstances.at(j).at(i) = (x - featureMean)/stdDev;          // replace it
         }
     }
 }
