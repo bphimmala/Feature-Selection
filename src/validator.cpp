@@ -1,51 +1,19 @@
 #include "../header/validator.h"
 
-double validator(vector<int> featureSubset, string dataFile){
-    ifstream inputFile(dataFile);
-    vector<vector<double>> allInstances;
-
-    char delimiter = ' ';
-
-    if(inputFile.is_open()){
-        string line;
-        double i = 0;
-        while(getline(inputFile, line, '\n')){
-            vector<double> tempVector;
-            istringstream s(line);
-            while(s >> i || !s.eof()){
-                if(s.fail()){
-                    s.clear();
-                    string temp;
-                    s >> temp;
-                    continue;
-                }
-                else{
-                    tempVector.push_back(i);
-                }
-            }
-            allInstances.push_back(tempVector);
-        }
-    }
-    
-    normalize(allInstances);
-    
-    //////////////////////////////
-    //  CLASSIFIER + VALIDATOR  //
-    //////////////////////////////
-
+double validator(vector<int> featureSubset, vector<vector<double>> allInstances){
     int nearestNeighbor;
     double correct = 0;
         
-    for(int i = 0; i < allInstances.size(); i++){ // THIS ONE IS THE ONE WE ARE TESTING
+    for(int i = 0; i < allInstances.size(); i++){ // iterate through all instances and pick instance i to use as test
         vector<double> testingInstance = allInstances.at(i);
         double distance = INFINITY;
 
-        for(int j = 0; j < allInstances.size(); j++){ // THIS IS WHAT WE'RE TESTING AGAINST
+        for(int j = 0; j < allInstances.size(); j++){ // iterate through all other instances to test i against
             if(j != i){
                 vector<double> comparingInstance = allInstances.at(j);
                 double sumSq = 0;
 
-                for(int k = 0; k < featureSubset.size(); k++){ // FINDS THE FEATURES
+                for(int k = 0; k < featureSubset.size(); k++){ // begins Euclidean distance for feature subset
                     sumSq = sumSq + pow((testingInstance.at(featureSubset.at(k)) - comparingInstance.at(featureSubset.at(k))), 2);
                 }
 
@@ -57,11 +25,10 @@ double validator(vector<int> featureSubset, string dataFile){
             }
         }
 
-        if (allInstances.at(nearestNeighbor).at(0) == testingInstance.at(0)) {
+        if (allInstances.at(nearestNeighbor).at(0) == testingInstance.at(0)) { // count how many correct classifications
             ++correct;
         }
     }
-
     return (correct / allInstances.size());
 }
 

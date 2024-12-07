@@ -5,10 +5,10 @@ Node Search(Node parent) {
     frontier.push(parent);
     
     if (parent.getAlgorithm() == 0) {
-        cout << "Using no features and \"random\" evaluation, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
+        cout << "Using no features and Nearest Neighbor Classifier, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
     }
     if (parent.getAlgorithm() == 1) {
-        cout << "Using all features and \"random\" evaluation, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
+        cout << "Using all features and Nearest Neighbor Classifer, I get an accuracy of " << parent.getAccuracy() << "%" << endl << endl;
     }
 
     cout << "Beginning search." << endl << endl;
@@ -40,9 +40,6 @@ void expand(Node parentToExpand, priority_queue<Node> &frontier) {
         Node temp(i, parentToExpand);
         if(temp.isValid()){
             temp.updateState();
-            cout << "Using feature(s) ";
-            temp.printState();
-            cout << " has an accuracy of " << temp.getAccuracy() << "%" << endl;
             if (temp.getAccuracy() == 0) {
                 cout << endl;
                 return;

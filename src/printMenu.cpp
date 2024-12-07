@@ -9,14 +9,10 @@ void printMenu() {
 
     cout << "Welcome to ehix001-sphim001 Feature Selection Algorithm" << endl << endl;
     
-    cout << "Please enter the total number of features: ";
-    cin >> userFeatureChoice;
-    cout << endl;
-
     cout << "Type the number of the algorithm you want to run." << endl;
     cout << "1) Forward Selection" << endl;
     cout << "2) Backward Elimination" << endl << endl;
-    // cout << "3) Special Algorithm" << endl << endl;
+
     cin >> userAlgorithmChoice;
     cout << endl;
 
@@ -28,17 +24,19 @@ void printMenu() {
     }
     
     cout << "Type the number of the dataset to use." << endl;
-    cout << "1) Small" << endl;
-    cout << "2) Large" << endl << endl;
-    // cout << "3) Special Algorithm" << endl << endl;
+    cout << "1) Small Dataset" << endl;
+    cout << "2) Large Dataset" << endl << endl;
     cin >> userDatasetChoice;
     cout << endl;
 
-    if (userDatasetChoice == 1) {
+    if(userDatasetChoice == 1){
         dataset = "../include/small-test-dataset.txt";
     }
-    else if (userDatasetChoice == 2) {
+    else if(userDatasetChoice == 2){
         dataset = "../include/large-test-dataset.txt";
+    }
+    else{
+        cout << "Invalid Dataset Selected." << endl;
     }
 
     Node initialNode(algorithm, userFeatureChoice, dataset);

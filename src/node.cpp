@@ -2,10 +2,10 @@
 
 Node::Node(int algo, int featMax, string userDataset) {
     // parent constructor
-    featureMax = featMax;
     algorithm = algo;
     newFeat = 0;
-    dataset = userDataset;
+    dataset = read(userDataset);
+    featureMax = (dataset.at(0)).size() - 1;
 
     if (algorithm) { // backwards elimination
         for (int i = 0; i < featureMax; ++i) {
@@ -58,10 +58,29 @@ void Node::updateState(){
             }
         }
     }
+
     accuracy = validator(currState, dataset);
+    
     if (isEmpty()) {
         accuracy = 0;
     }
+}
+
+void Node::printState() {
+    cout << "{";
+    if (currState.size() > 1) {
+        for (int i = 0; i < currState.size()-1; ++i) {
+            cout << currState.at(i) << ", ";
+        }
+        cout << currState.at(currState.size()-1);
+    }
+    else if (currState.size() == 1) {
+        if (currState.at(0) != 0) {
+            cout << currState.at(0);
+        }
+    }
+    cout << "}";
+    return;
 }
 
 bool Node::isValid(){
@@ -118,23 +137,6 @@ int Node::getFeatureMax() {
 
 double Node::getAccuracy() {
     return accuracy;
-}
-
-void Node::printState() {
-    cout << "{";
-    if (currState.size() > 1) {
-        for (int i = 0; i < currState.size()-1; ++i) {
-            cout << currState.at(i) << ", ";
-        }
-        cout << currState.at(currState.size()-1);
-    }
-    else if (currState.size() == 1) {
-        if (currState.at(0) != 0) {
-            cout << currState.at(0);
-        }
-    }
-    cout << "}";
-    return;
 }
 
 int Node::getAlgorithm() {

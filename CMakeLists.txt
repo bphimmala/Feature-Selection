@@ -7,4 +7,5 @@ ADD_EXECUTABLE(run
     src/node.cpp
     src/Search.cpp
     src/validator.cpp
+    src/readDataset.cpp
 )
