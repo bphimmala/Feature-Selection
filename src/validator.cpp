@@ -29,7 +29,7 @@ double validator(vector<int> featureSubset, vector<vector<double>> allInstances)
             ++correct;
         }
     }
-    return (correct / allInstances.size());
+    return ((correct / allInstances.size())*100);
 }
 
 void normalize(vector<vector<double>> &allInstances) {
