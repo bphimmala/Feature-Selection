@@ -25,7 +25,8 @@ void printMenu() {
     
     cout << "Type the number of the dataset to use." << endl;
     cout << "1) Small Dataset" << endl;
-    cout << "2) Large Dataset" << endl << endl;
+    cout << "2) Large Dataset" << endl;
+    cout << "3) Titanic Dataset" << endl;
     cin >> userDatasetChoice;
     cout << endl;
 
@@ -34,6 +35,9 @@ void printMenu() {
     }
     else if(userDatasetChoice == 2){
         dataset = "../include/large-test-dataset.txt";
+    }
+    else if(userDatasetChoice == 3){
+        dataset = "../include/titanic-dataset.txt";
     }
     else{
         cout << "Invalid Dataset Selected." << endl;

@@ -28,7 +28,7 @@ Node Search(Node parent) {
         }
         cout << "Feature set ";
         newTop.printState();
-        cout << " was best, accuracy is " << newTop.getAccuracy() << "%" << endl << endl;
+        cout << " was best, accuracy is " << newTop.getAccuracy() << "%" << endl;
     }
     
     return parent; //INVALID -- should not reach
