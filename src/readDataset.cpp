@@ -4,8 +4,6 @@ vector<vector<double>> read(string dataFile){
     ifstream inputFile(dataFile);
     vector<vector<double>> allInstances;
 
-    char delimiter = ' ';
-
     if(inputFile.is_open()){
         string line;
         double i = 0;
