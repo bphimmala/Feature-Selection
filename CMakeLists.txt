@@ -9,9 +9,3 @@ ADD_EXECUTABLE(run
     src/validator.cpp
     src/readDataset.cpp
 )
-
-ADD_EXECUTABLE(runPartTwo
-    src/mainPartTwo.cpp
-    src/validator.cpp
-    src/readDataset.cpp
-)
