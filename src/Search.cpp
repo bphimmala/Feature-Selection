@@ -40,6 +40,9 @@ void expand(Node parentToExpand, priority_queue<Node> &frontier) {
         Node temp(i, parentToExpand);
         if(temp.isValid()){
             temp.updateState();
+            cout << "Using feature(s) ";
+            temp.printState();
+            cout << " accuracy is " << temp.getAccuracy() << "%" << endl;
             if (temp.getAccuracy() == 0) {
                 cout << endl;
                 return;
